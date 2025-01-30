@@ -13,23 +13,7 @@ static void generateRandomNumbers() {
 	}
 }
 
-#pragma endregion
-
-//--------------------------------------------------------------
-void ofApp::setup() {
-	generateRandomNumbers();
-	for (int i = 0; i < 5; i++) {
-		std::cout << "Random number " << i + 1 << ": " << randomNumbers[i] << std::endl;
-	}
-}
-
-//--------------------------------------------------------------
-void ofApp::update() {
-
-}
-
-//--------------------------------------------------------------
-void ofApp::draw() {
+static void drawCirclesWithText() {
 	// Draw 5 circles with random numbers
 	for (int i = 0; i < 5; i++) {
 		std::string text = std::to_string(randomNumbers[i]);
@@ -52,9 +36,28 @@ void ofApp::draw() {
 	}
 }
 
+#pragma endregion
+
+//--------------------------------------------------------------
+void ofApp::setup() {
+	generateRandomNumbers();
+}
+
+//--------------------------------------------------------------
+void ofApp::update() {
+
+}
+
+//--------------------------------------------------------------
+void ofApp::draw() {
+	drawCirclesWithText();
+}
+
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-
+	if (key == 'r') {
+		generateRandomNumbers();
+	}
 }
 
 //--------------------------------------------------------------
