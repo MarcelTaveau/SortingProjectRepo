@@ -1,7 +1,9 @@
 #include "ofApp.h"
+#include <iostream>
+#include <vector>
 
 // Declare global variables
-int randomNumbers[5]; // Array to store 5 random numbers
+std::vector<int> randomNumbers; // Vector to store 5 random numbers
 ofTrueTypeFont fontArial; // Font object
 
 #pragma region Custom Functions
@@ -9,12 +11,17 @@ ofTrueTypeFont fontArial; // Font object
 // Generate 5 random numbers between 10 and 100
 static void generateRandomNumbers() {
 	for (int i = 0; i < 5; i++) {
-		randomNumbers[i] = ofRandom(10, 100);
+		randomNumbers.push_back(ofRandom(10, 100));
 	}
 }
 
+// Bubble sort the random numbers
+void bubbleSort() {
+
+}
+
+// Draw 5 circles with random numbers
 static void drawCirclesWithText() {
-	// Draw 5 circles with random numbers
 	for (int i = 0; i < 5; i++) {
 		std::string text = std::to_string(randomNumbers[i]);
 		int fontSize = randomNumbers[i];
