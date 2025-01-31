@@ -77,6 +77,28 @@ void mergeSort(std::vector<int>& arr, int left, int right) {
 	}
 }
 
+// Quick sort the numbers
+int partition(std::vector<int>& arr, int low, int high) {
+	int pivot = arr[high];
+	int i = low - 1;
+	for (int j = low; j < high; j++) {
+		if (arr[j] < pivot) {
+			i++;
+			std::swap(arr[i], arr[j]);
+		}
+	}
+	std::swap(arr[i + 1], arr[high]);
+	return i + 1;
+}
+
+void quickSort(std::vector<int>& arr, int low, int high) {
+	if (low < high) {
+		int pi = partition(arr, low, high);
+		quickSort(arr, low, pi - 1);
+		quickSort(arr, pi + 1, high);
+	}
+}
+
 // Draw 5 circles with random numbers
 static void drawCirclesWithText() {
 	for (int i = 0; i < 5; i++) {
@@ -130,6 +152,9 @@ void ofApp::keyPressed(int key) {
 	}
 	if (key == 'm') { // Merge sort
 		mergeSort(randomNumbers, 0, randomNumbers.size() - 1);
+	}
+	if (key == 'q') { // Quick sort
+		quickSort(randomNumbers, 0, randomNumbers.size() - 1);
 	}
 }
 
