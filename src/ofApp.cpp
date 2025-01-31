@@ -27,6 +27,19 @@ void bubbleSort(std::vector<int>& arr) {
 	}
 }
 
+// Insertion sort the numbers
+void insertionSort(std::vector<int>& arr) {
+	for (size_t i = 1; i < arr.size(); i++) {
+		int key = arr[i];
+		int j = i - 1;
+		while (j >= 0 && arr[j] > key) {
+			arr[j + 1] = arr[j];
+			j--;
+		}
+		arr[j + 1] = key;
+	}
+}
+
 // Draw 5 circles with random numbers
 static void drawCirclesWithText() {
 	for (int i = 0; i < 5; i++) {
@@ -69,11 +82,14 @@ void ofApp::draw() {
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key) {
-	if (key == 'r') {
+	if (key == 'r') { // Random number generation
 		generateRandomNumbers();
 	}
-	if (key == 'b') {
+	if (key == 'b') { // Bubble sort
 		bubbleSort(randomNumbers);
+	}
+	if (key == 'i') { // Insertion sort
+		insertionSort(randomNumbers);
 	}
 }
 
