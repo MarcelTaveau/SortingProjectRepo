@@ -10,14 +10,21 @@ ofTrueTypeFont fontArial; // Font object
 
 // Generate 5 random numbers between 10 and 100
 static void generateRandomNumbers() {
+	randomNumbers.clear(); // Clear the vector before regenerating
 	for (int i = 0; i < 5; i++) {
 		randomNumbers.push_back(ofRandom(10, 100));
 	}
 }
 
 // Bubble sort the random numbers
-void bubbleSort() {
-
+void bubbleSort(std::vector<int>& arr) {
+	for (size_t i = 0; i < arr.size(); i++) {
+		for (size_t j = 0; j < arr.size() - i - 1; j++) {
+			if (arr[j] > arr[j + 1]) {
+				std::swap(arr[j], arr[j + 1]);
+			}
+		}
+	}
 }
 
 // Draw 5 circles with random numbers
@@ -64,6 +71,9 @@ void ofApp::draw() {
 void ofApp::keyPressed(int key) {
 	if (key == 'r') {
 		generateRandomNumbers();
+	}
+	if (key == 'b') {
+		bubbleSort(randomNumbers);
 	}
 }
 
