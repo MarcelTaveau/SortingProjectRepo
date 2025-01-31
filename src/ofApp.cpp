@@ -99,6 +99,14 @@ void quickSort(std::vector<int>& arr, int low, int high) {
 	}
 }
 
+// Fisher-Yates shuffle the numbers
+void fisherYatesShuffle(std::vector<int>& arr) {
+	for (size_t i = arr.size() - 1; i > 0; i--) { // Start from the last element
+		int j = ofRandom(i + 1); // j = random index from 0 to i
+		std::swap(arr[i], arr[j]); // Swap elements at i and j
+	}
+}
+
 // Draw 5 circles with random numbers
 static void drawCirclesWithText() {
 	for (int i = 0; i < 5; i++) {
@@ -155,6 +163,9 @@ void ofApp::keyPressed(int key) {
 	}
 	if (key == 'q') { // Quick sort
 		quickSort(randomNumbers, 0, randomNumbers.size() - 1);
+	}
+	if (key == 's') { // Fisher-Yates shuffle
+		fisherYatesShuffle(randomNumbers);
 	}
 }
 
