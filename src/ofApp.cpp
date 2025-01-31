@@ -40,6 +40,43 @@ void insertionSort(std::vector<int>& arr) {
 	}
 }
 
+// Merge sort the numbers
+void merge(std::vector<int>& arr, int left, int mid, int right) {
+	std::vector<int> temp;
+	int i = left;
+	int j = mid + 1;
+	while (i <= mid && j <= right) {
+		if (arr[i] <= arr[j]) {
+			temp.push_back(arr[i]);
+			i++;
+		}
+		else {
+			temp.push_back(arr[j]);
+			j++;
+		}
+	}
+	while (i <= mid) {
+		temp.push_back(arr[i]);
+		i++;
+	}
+	while (j <= right) {
+		temp.push_back(arr[j]);
+		j++;
+	}
+	for (size_t k = 0; k < temp.size(); k++) {
+		arr[left + k] = temp[k];
+	}
+}
+
+void mergeSort(std::vector<int>& arr, int left, int right) {
+	if (left < right) {
+		int mid = (left + right) / 2;
+		mergeSort(arr, left, mid);
+		mergeSort(arr, mid + 1, right);
+		merge(arr, left, mid, right);
+	}
+}
+
 // Draw 5 circles with random numbers
 static void drawCirclesWithText() {
 	for (int i = 0; i < 5; i++) {
@@ -90,6 +127,9 @@ void ofApp::keyPressed(int key) {
 	}
 	if (key == 'i') { // Insertion sort
 		insertionSort(randomNumbers);
+	}
+	if (key == 'm') { // Merge sort
+		mergeSort(randomNumbers, 0, randomNumbers.size() - 1);
 	}
 }
 
