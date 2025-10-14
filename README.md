@@ -20,4 +20,4 @@ s - Fisher-Yates shuffle the numbers
 
 ## Author
 
-- [@Marmin101](https://github.com/Marmin101)
+- [@MarcelTaveau](https://github.com/MarcelTaveau)
